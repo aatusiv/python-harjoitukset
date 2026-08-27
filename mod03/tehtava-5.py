@@ -1,7 +1,7 @@
 # Tavaroiden painot grammoissa vakiona
-LUOTI = 13.3
-NAULA = LUOTI * 32
-LEIVISKA = NAULA * 20
+LUOTI_PAINO = 13.3
+NAULA_PAINO = LUOTI_PAINO * 32
+LEIVISKA_PAINO = NAULA_PAINO * 20
 
 # Kysyy käyttäjältä lukuarvot
 leiviskat = float(input("Anna leiviskät: "))
@@ -9,7 +9,7 @@ naulat = float(input("Anna naulat: "))
 luodit = float(input("Anna luodit: "))
 
 # Laskee painon
-yhteispaino = leiviskat*LEIVISKA + naulat*NAULA + luodit*LUOTI
+yhteispaino = leiviskat*LEIVISKA_PAINO + naulat*NAULA_PAINO + luodit*LUOTI_PAINO
 kilot = yhteispaino / 1000
 grammat = yhteispaino % 1000
 
