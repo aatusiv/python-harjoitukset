@@ -1,6 +1,6 @@
 # Kysyy nimeä
-nimi = input("Syötä nimesi: ")
+name = input("Syötä nimesi: ")
 
 # Tulosta tervehdys
-print(f"Terve, {nimi}")
+print(f"Terve, {name}!")
 
