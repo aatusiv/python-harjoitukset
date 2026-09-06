@@ -1,4 +1,13 @@
 name = input("Anna nimesi: ")
-age = input("Anna ikäsi: ")
+age = int(input("Anna ikäsi: "))
 
-print(f"Nimesi on {name} ja ikäsi {age}.")
+if age < 12:
+    print("Olet alaikäinen, peli sammuu.")
+else:
+    print(f"Hei, {name}")
+    while True:
+        print("1. Aloita\n2. Lopeta")
+        selection = input("Kirjoita komento: ")
+        if selection == "Lopeta":
+            break
+# print(f"Nimesi on {name} ja ikäsi {age}.")
