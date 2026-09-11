@@ -5,7 +5,7 @@ while True:
     if value == "":
         break
     else:
-        values.append(value)
+        values.append(int(value))
 
 values.sort()
 try:
