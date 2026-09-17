@@ -51,6 +51,6 @@ while winner is False:
     for x in range(len(cars)):
         if cars[x].matka >= 10000:
             print(f"{cars[x].rekisteritunnus} on voittanut kilpailun")
-            for x in range(len(cars)):
-                print(f"Rekisteritunnus: {cars[x].rekisteritunnus}, huippunopeus: {cars[x].huippunopeus}km/h, nopeus: {cars[x].nopeus}km/h, matka: {cars[x].matka}km")
+            for y in range(len(cars)):
+                print(f"Rekisteritunnus: {cars[y].rekisteritunnus}, huippunopeus: {cars[y].huippunopeus}km/h, nopeus: {cars[y].nopeus}km/h, matka: {cars[y].matka}km")
             winner = True
