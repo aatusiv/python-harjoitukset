@@ -24,7 +24,7 @@ class Auto:
                 print(f"Nopeus on nyt: {self.nopeus}km/h.")
 
     def kulje(self, tunnit):
-        self.matka = self.nopeus * tunnit
+        self.matka += self.nopeus * tunnit
         print(f"Kuljettu matka: {self.matka}km.")
 
 

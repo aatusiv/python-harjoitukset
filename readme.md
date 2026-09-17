@@ -36,3 +36,9 @@ Tein kaikki harjoitustehtävät
 ## Moduuli 8
 
 Tein kaikki harjoitustehtävät
+
+## Moduuli 9
+
+Tein kaikki harjoitustehtävät
+Tehtävä 3 ja 4 kulje-metodista korjattu bugi.
+self.matka = self.nopeus * tunnit -> self.matka += self.nopeus * tunnit
