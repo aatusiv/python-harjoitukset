@@ -3,6 +3,7 @@ all_names = set()
 while True:
     name = input("Anna nimi: ")
     if name == "":
+        print(all_names)
         print("Ohjelma lopetetaan.")
         break
 
