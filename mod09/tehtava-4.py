@@ -16,7 +16,7 @@ class Auto:
                 self.nopeus += nopeus
                 # print(f"Nopeus on nyt: {self.nopeus}km/h.")
 
-        elif nopeus < 0:
+        else:
             # matematiikan säännöt ex. 150 + (-200)
             if self.nopeus + nopeus <= 0:
                 self.nopeus = 0
