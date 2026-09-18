@@ -46,3 +46,7 @@ self.matka = self.nopeus * tunnit -> self.matka += self.nopeus * tunnit
 ## Moduuli 10
 
 Tein tehtävät 1-4.
+
+## Moduuli 11
+
+Tein tehtävät 1-2
