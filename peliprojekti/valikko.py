@@ -3,7 +3,7 @@ inv = []
 def menu():
 
     while True:
-        selection = input("\n1. Lisää esineitä varastoon\n2. Näytä esineet\n3. Tarkasta pelaajan tiedot\n4. Vaihda pelaajan tiedot\n0. Lopeta peli")
+        selection = input("\n1. Lisää esineitä varastoon\n2. Näytä esineet\n3. Tarkasta pelaajan tiedot\n4. Vaihda pelaajan tiedot\n0. Lopeta peli\n")
         if selection == "1":
             inventory()
 
@@ -14,7 +14,11 @@ def menu():
             check_playerinfo()
 
         elif selection == "4":
-            change_playerinfo()
+            age_check = change_playerinfo()
+            if age_check is False:
+                print("Olet alaikäinen, peli sammuu.")
+                break
+
         elif selection == "0":
             print("\nPeli sammuu. Kiitos pelaamisesta")
             break
@@ -52,7 +56,10 @@ def check_playerinfo():
 
 def change_playerinfo():
     name = input("\nAnna uusi nimi: ")
-    age = input("Anna uusi ikä: ")
+    age = int(input("Anna uusi ikä: "))
+
+    if age < 12:
+        return False
 
     try:
         with open("pelaaja-tiedot.txt", "w") as file:
