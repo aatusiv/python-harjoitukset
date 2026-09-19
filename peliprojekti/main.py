@@ -1,4 +1,5 @@
-import pelaajatiedot, valikko, hahmot, huoneet, random
+import pelaajatiedot, valikko, random
+from peli import hahmot, huoneet
 
 def main():
     age_check = pelaajatiedot.kysy_tiedot()

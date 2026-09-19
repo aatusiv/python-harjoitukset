@@ -3,22 +3,15 @@ inv = []
 def menu():
 
     while True:
-        selection = input("\n1. Lisää esineitä varastoon\n2. Näytä esineet\n3. Tarkasta pelaajan tiedot\n4. Vaihda pelaajan tiedot\n0. Lopeta peli\n")
+        selection = input("\n1. Aloita peli\n2. Tarkasta pelaajan tiedot\n3. Vaihda pelaajan tiedot\n0. Lopeta peli\n")
         if selection == "1":
-<<<<<<< HEAD
-            inventory()
-=======
             print("Onnea peliin!")
             break
->>>>>>> 6436a12 (Korjattu iäntarkistus, lisätty luokat ja muutettu valikkoa)
 
         elif selection == "2":
-            print_inventory()
-
-        elif selection == "3":
             check_playerinfo()
 
-        elif selection == "4":
+        elif selection == "3":
             age_check = change_playerinfo()
             if age_check is False:
                 print("Olet alaikäinen, peli sammuu.")
