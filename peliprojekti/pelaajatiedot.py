@@ -2,6 +2,7 @@ def kysy_tiedot():
 
     name = input("Anna nimesi: ")
     age = int(input("Anna ikäsi: "))
+    
     try:
         with open("pelaaja-tiedot.txt", "w") as file:
             file.write(f"{name}, {age}")

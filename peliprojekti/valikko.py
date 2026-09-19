@@ -1,5 +1,3 @@
-
-
 inv = []
 
 def menu():
