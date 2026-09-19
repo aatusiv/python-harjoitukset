@@ -5,7 +5,12 @@ def menu():
     while True:
         selection = input("\n1. Lisää esineitä varastoon\n2. Näytä esineet\n3. Tarkasta pelaajan tiedot\n4. Vaihda pelaajan tiedot\n0. Lopeta peli\n")
         if selection == "1":
+<<<<<<< HEAD
             inventory()
+=======
+            print("Onnea peliin!")
+            break
+>>>>>>> 6436a12 (Korjattu iäntarkistus, lisätty luokat ja muutettu valikkoa)
 
         elif selection == "2":
             print_inventory()
@@ -22,25 +27,6 @@ def menu():
         elif selection == "0":
             print("\nPeli sammuu. Kiitos pelaamisesta")
             break
-
-def inventory():
-
-    print("\n")
-    while True:
-        item = input("Anna esine(Paina enteriä poistuaksesi): ")
-        if item == "":
-            break
-        inv.append(item)
-
-def print_inventory():
-
-    if len(inv) == 0:
-        print("\nVarasto on tyhjä.\n")
-
-    else:
-        print("\nVarastossa on:")
-        for x in range(len(inv)):
-            print(f"- {inv[x]}")
 
 def check_playerinfo():
     try:
