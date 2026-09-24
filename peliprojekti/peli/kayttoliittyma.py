@@ -5,7 +5,9 @@ def printStats(location, time, score, bag):
     except subprocess.CalledProcessError as e:
         print(f"Komento epäonnistui: {e.returncode}") 
         print(f"Error message: {e.stderr.strip()}")
-        
+
+
+    # Formatoitu status ikkuna josta voi seurata pisteitä, aikaa, huonetta sekä reppua(esineitä) 
     loc_text = f"Sijainti: {location}"
     score_text = f"Pisteet: {score}"
     print("=" * 140)
