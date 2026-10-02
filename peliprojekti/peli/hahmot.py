@@ -6,13 +6,16 @@ class Kissa():
         self.bag = bag
         self.location = location
 
-    def move(self):
-        pass
+    def move(self, room):
+        self.location = room
 
-    def pick_item(self):
-        pass
+    def pick_item(self, item):
+        self.bag.append(item)
 
 if __name__ == "__main__":
     # Testit
     kissa = Kissa("Testinimi", 34, ["kissanminttu", "lankapallo"], "olohuone")
+    print(kissa.name, kissa.score, kissa.bag, kissa.location)
+    kissa.move("makuuhuone")
+    kissa.pick_item("lamppu")
     print(kissa.name, kissa.score, kissa.bag, kissa.location)
