@@ -7,12 +7,12 @@ class Huone():
         self.items = items
         self.devices = devices
 
-makuuhuone = Huone("makuuhuone", "Ihmiset nukkuvat...", {"etelä" : "olohuone"}, [], [])
-olohuone = Huone("olohuone", "Televisio on päällä.", {"pohjoinen" : "makuuhuone", "länsi" : "työhuone", "itä" : "keittiö"}, ["kissanminttu"],  ["televisio"])
-työhuone = Huone("työhuone", "Työhuoneessa on tietokone", {"itä" : "olohuone"}, ["koiranluu", "lankakerä"], ["tietokone"])
-keittiö = Huone("keittiö", "Keittiössä on foo...", {"länsi" : "olohuone", "pohjoinen" : "kodinhoitohuone"}, ["nakki", "raksuja"], [])
-kodinhoitohuone = Huone("kodinhoitohuone", "Kodinhoitohuoneessa on jotain", {"etelä" : "keittiö"}, ["kinkkuviipale"], [])
-vessa = Huone("vessa", "Vessassa ei ole mitään", {"etelä" : "kodinhoitohuone"}, ["vessapaperi"], [])
+makuuhuone = Huone("makuuhuone", "Ihmiset nukkuvat... Pitää olla hiljaa.", {"etelä" : "olohuone"}, [], [])
+olohuone = Huone("olohuone", "Televisio on päällä illalta päälle....", {"pohjoinen" : "makuuhuone", "länsi" : "työhuone", "itä" : "keittiö"}, ["kissanminttu"],  ["televisio"])
+työhuone = Huone("työhuone", "Työhuoneessa on tietokone, joka on unohtunut päälle.", {"itä" : "olohuone"}, ["koiranluu", "lankakerä"], ["tietokone"])
+keittiö = Huone("keittiö", "Keittiössä on pöydälle jäänyt nakkeja.", {"länsi" : "olohuone", "pohjoinen" : "kodinhoitohuone"}, ["nakki", "raksuja"], [])
+kodinhoitohuone = Huone("kodinhoitohuone", "Kodinhoitohuonetta vartioi koira, sitä pitää harhauttaa.", {"etelä" : "keittiö"}, ["kinkkuviipale"], [])
+vessa = Huone("vessa", "Vessassa on hämärää ja lattialla paperirulla.", {"etelä" : "kodinhoitohuone"}, ["vessapaperi"], [])
 
 all_rooms = {"makuuhuone" : makuuhuone, "olohuone" : olohuone, "keittiö" : keittiö, "työhuone" : työhuone, "kodinhoitohuone" : kodinhoitohuone, "vessa": vessa}
 

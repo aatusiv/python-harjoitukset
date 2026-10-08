@@ -1,7 +1,10 @@
 ## Ernest's Adventures
+
 Aatu Sivonen
 
+## Ohjeet
 
-## Päivitykset
+Peliä pelataan kirjoittamalla komentaja (liiku/ota/tallenna)
 
-Muutettu valikon valinnat funktioksi, lisätty pelaajatiedon tarkistus ja vaihto
+Sinun pitää kerätä 50 pistettä ja palaamalla takaisin makuuhuoneeseen ennenkuin aika loppuu.
+Pisteitä saa keräämällä tavaroita, herkkuja tai sammuttamalla laitteita.
