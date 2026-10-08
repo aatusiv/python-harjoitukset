@@ -11,6 +11,7 @@ def main():
 
         data = valikko.menu() # Jos olemassa, palauttaa ernestin + ajan
 
+        # Lopettaa pelin (valikko.menu() palauttaa False, jos käyttäjä valitsee 0)
         if data == False:
             return
 

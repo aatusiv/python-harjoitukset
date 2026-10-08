@@ -41,7 +41,7 @@ def menu():
 
         elif selection == "0":
             print("\nPeli sammuu. Kiitos pelaamisesta")
-            break
+            return False
 
 
 def check_playerinfo():
