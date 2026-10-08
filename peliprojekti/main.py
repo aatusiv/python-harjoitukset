@@ -7,7 +7,20 @@ def main():
         valikko.menu()
         ernesti = hahmot.Kissa(name="Ernesti", score=0, bag=[], location="makuuhuone") # Luo pelin päähahmon, aloituspaikkana aina makuuhuone
 
+        time = 120
+
         while True:
+
+            time_hours = time // 60
+            time_min = time % 60
+            print_time = f"{time_hours:02d}:{time_min:02d}"
+
+            if time >= 420:
+                print("Kello löi 07:00, ihmiset heräsivät ja jäit kiinni. Hävisit pelin.")
+                break
+            if ernesti.location == "makuuhuone" and ernesti.score >= 50:
+                print("Voitit pelin, keräsit herkut ja ehdit ajoissa nukkumaan.")
+                break
 
             # Puhdistaa näytön ja printtaa statuksen
             if os.name == "nt":
@@ -15,7 +28,7 @@ def main():
             else:
                 cmd = "clear"
             subprocess.run(cmd, shell=True)
-            kayttoliittyma.printStats(ernesti.location, "02:00", ernesti.score, ernesti.bag)
+            kayttoliittyma.printStats(ernesti.location, print_time, ernesti.score, ernesti.bag)
 
             current_room = huoneet.all_rooms[ernesti.location]
             print(f"\n{current_room.desc}\n")
@@ -42,6 +55,7 @@ def main():
             elif selection in current_room.nearby_rooms:
                 new_loc = current_room.nearby_rooms[selection]
                 ernesti.move(new_loc) 
+                time += 15
 
             elif selection.startswith("ota"):
                 item = selection.split(" ")[1]
@@ -49,6 +63,7 @@ def main():
                 if item in current_room.items:
                     ernesti.pick_item(item)
                     current_room.items.remove(item)
+                    time += 15
                 else:
                     input(f"Ei ole esinettä: {item}. Enterr jatkaaksesi.")
             
