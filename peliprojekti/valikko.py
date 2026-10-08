@@ -1,44 +1,53 @@
-from peli import tallennus, hahmot
+from peli import tallennus, hahmot, kayttoliittyma
+import os, subprocess
 
 def menu():
 
     while True:
-        selection = input("\n1. Aloita peli\n2. Lataa peli\n3. Tarkasta pelaajan tiedot\n4. Vaihda pelaajan tiedot\n0. Lopeta peli\n")
+
+        # Puhdistaa näytön ja printtaa statuksen, tarkastaa käyttiksen
+        kayttoliittyma.clear_screen()
+
+
+        selection = input("1. Aloita peli\n2. Lataa peli\n3. Tarkasta pelaajan tiedot\n4. Vaihda pelaajan tiedot\n0. Lopeta peli\n")
         if selection == "1":
-            print("Onnea peliin!")
+            input("Onnea peliin! Enter aloittaaksesi pelin")
             return None
 
         elif selection == "2":
-            # Ladataan tiedot JSONista
+            # Ladataan tiedot JSON filusta
             loaded_data = tallennus.lataa_peli()
             
             if loaded_data is not None:
-
                 ernesti = hahmot.Kissa(name="Ernesti", score=loaded_data["pisteet"], bag=loaded_data["reppu"], location=loaded_data["sijainti"])
                 ernesti.devices_off = set(loaded_data["sammutetut"])
                 time = loaded_data["kello"]
                 return ernesti, time
             else:
-                print("Tallennuksen lataaminen epäonnistui.")
+                input("Tallennuksen lataaminen epäonnistui.")
+
 
         elif selection == "3":
+            kayttoliittyma.clear_screen()
             check_playerinfo()
+            input()
 
         elif selection == "4":
             age_check = change_playerinfo()
             if age_check is False:
                 print("Olet alaikäinen, peli sammuu.")
-                break
+                return False
 
         elif selection == "0":
             print("\nPeli sammuu. Kiitos pelaamisesta")
             break
 
+
 def check_playerinfo():
     try:
         with open("pelaaja-tiedot.txt", "r") as file:
             name, age = file.read().split(", ")
-            print(f"\nNimi: {name}\nIkä: {age}")
+            print(f"Nimi: {name}\nIkä: {age}")
 
     except FileNotFoundError:
         print("Tiedostoa ei löydy.")
@@ -46,8 +55,10 @@ def check_playerinfo():
     except IOError:
         print("Tiedoston käsittelyssä oli virhe.")
 
+
 def change_playerinfo():
-    name = input("\nAnna uusi nimi: ")
+    kayttoliittyma.clear_screen()
+    name = input("Anna uusi nimi: ")
     age = int(input("Anna uusi ikä: "))
 
     if age < 12:

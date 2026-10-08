@@ -2,10 +2,16 @@ import pelaajatiedot, valikko, subprocess, os
 from peli import hahmot, huoneet, kayttoliittyma, tallennus
 
 def main():
+
+    # Puhdistaa näytön ja printtaa statuksen, tarkastaa käyttiksen
+    kayttoliittyma.clear_screen()
+    
     age_check = pelaajatiedot.kysy_tiedot()
     if age_check is True:
-        data = valikko.menu()
-        if data is False:
+
+        data = valikko.menu() # Jos olemassa, palauttaa ernestin + ajan
+
+        if data == False:
             return
 
         if isinstance(data, tuple):
@@ -28,14 +34,6 @@ def main():
             if ernesti.location == "makuuhuone" and ernesti.score >= 50:
                 print("Voitit pelin, keräsit herkut ja ehdit ajoissa nukkumaan.")
                 break
-
-
-            # Puhdistaa näytön ja printtaa statuksen, tarkastaa käyttiksen
-            if os.name == "nt":
-                cmd = "cls"
-            else:
-                cmd = "clear"
-            subprocess.run(cmd, shell=True)
 
 
             kayttoliittyma.printStats(ernesti.location, print_time, ernesti.score, ernesti.bag)
