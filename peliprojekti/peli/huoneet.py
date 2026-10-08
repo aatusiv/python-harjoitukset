@@ -11,7 +11,7 @@ makuuhuone = Huone("makuuhuone", "Ihmiset nukkuvat... Pitää olla hiljaa, jotta
 olohuone = Huone("olohuone", "Saavut olohuoneeseen, kuu paistaa ikkunasta sisään.", {"pohjoinen" : "makuuhuone", "länsi" : "työhuone", "itä" : "keittiö"}, ["kissanminttu"],  ["televisio"])
 työhuone = Huone("työhuone", "Työhuoneessa on tietokone, ihmisten likaisia kahvikuppeja sekä kirjoja lattialla.", {"itä" : "olohuone"}, ["koiranluu", "lankakerä"], ["tietokone"])
 keittiö = Huone("keittiö", "Keittiössä on pöydälle jäänyt nakkeja.", {"länsi" : "olohuone", "pohjoinen" : "kodinhoitohuone"}, ["nakki", "raksuja"], [])
-kodinhoitohuone = Huone("kodinhoitohuone", "Kodinhoitohuonetta vartioi koira, sitä pitää harhauttaa...", {"etelä" : "keittiö"}, ["kinkkuviipale"], [])
+kodinhoitohuone = Huone("kodinhoitohuone", "Kodinhoitohuonetta vartioi koira, mutta hän on liian kiireinen luun kanssa huomatakseen Ernestiä.", {"etelä" : "keittiö"}, ["kinkkuviipale"], [])
 vessa = Huone("vessa", "Vessassa on hämärää ja lattialla paperirulla.", {"etelä" : "kodinhoitohuone"}, ["vessapaperi"], [])
 
 all_rooms = {"makuuhuone" : makuuhuone, "olohuone" : olohuone, "keittiö" : keittiö, "työhuone" : työhuone, "kodinhoitohuone" : kodinhoitohuone, "vessa": vessa}

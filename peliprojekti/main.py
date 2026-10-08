@@ -62,7 +62,7 @@ def main():
                 print(f"- {direction} ({target_room.name})")
             print("\n" + "="*30)
 
-            selection = input("Mitä ernesti tekee? (liiku/ota/sammuta/tallenna/lopeta): ")
+            selection = input("Mitä Ernesti tekee? (liiku/ota/sammuta/tallenna/lopeta): ")
 
             if selection == "lopeta":
                 print("\nPeli päättyi.\n")
@@ -83,7 +83,10 @@ def main():
                         if new_loc == "kodinhoitohuone" and "koiranluu" not in ernesti.bag:
                             input("Koira vartioi kodinhoitohuoneessa, tarvitset luun jatkaaksesi. Enter jatkaaksesi.")
                         else:
-                            ernesti.move(new_loc) 
+                            if new_loc == "kodinhoitohuone" and "koiranluu" in ernesti.bag:
+                                input("Ernesti heittää luun harhauttaakseen koiraa.")
+                                ernesti.bag.remove("koiranluu")
+                            ernesti.move(new_loc)
                             time += 15
                     else:
                         input(f"Ei voi liikkua suuntaan {direction}. Enter jatkaaksesi.")
