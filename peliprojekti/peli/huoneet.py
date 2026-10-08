@@ -1,17 +1,18 @@
 class Huone():
 
-    def __init__(self, name, desc, nearby_rooms, items):
+    def __init__(self, name, desc, nearby_rooms, items, devices):
         self.name = name
         self.desc = desc
         self.nearby_rooms = nearby_rooms
         self.items = items
+        self.devices = devices
 
-makuuhuone = Huone("makuuhuone", "Ihmiset nukkuvat...", {"etelä" : "olohuone"}, [])
-olohuone = Huone("olohuone", "Televisio on päällä.", {"pohjoinen" : "makuuhuone", "länsi" : "työhuone", "itä" : "keittiö"}, ["kissanminttu"])
-työhuone = Huone("työhuone", "Työhuoneessa on tietokone", {"itä" : "olohuone"}, ["koiranluu", "lankakerä"])
-keittiö = Huone("keittiö", "Keittiössä on foo...", {"länsi" : "olohuone", "pohjoinen" : "kodinhoitohuone"}, ["nakki", "raksuja"])
-kodinhoitohuone = Huone("kodinhoitohuone", "Kodinhoitohuoneessa on jotain", {"etelä" : "keittiö"}, ["kinkkuviipale"])
-vessa = Huone("vessa", "Vessassa ei ole mitään", {"etelä" : "kodinhoitohuone"}, ["vessapaperi"])
+makuuhuone = Huone("makuuhuone", "Ihmiset nukkuvat...", {"etelä" : "olohuone"}, [], [])
+olohuone = Huone("olohuone", "Televisio on päällä.", {"pohjoinen" : "makuuhuone", "länsi" : "työhuone", "itä" : "keittiö"}, ["kissanminttu"],  ["televisio"])
+työhuone = Huone("työhuone", "Työhuoneessa on tietokone", {"itä" : "olohuone"}, ["koiranluu", "lankakerä"], ["tietokone"])
+keittiö = Huone("keittiö", "Keittiössä on foo...", {"länsi" : "olohuone", "pohjoinen" : "kodinhoitohuone"}, ["nakki", "raksuja"], [])
+kodinhoitohuone = Huone("kodinhoitohuone", "Kodinhoitohuoneessa on jotain", {"etelä" : "keittiö"}, ["kinkkuviipale"], [])
+vessa = Huone("vessa", "Vessassa ei ole mitään", {"etelä" : "kodinhoitohuone"}, ["vessapaperi"], [])
 
 all_rooms = {"makuuhuone" : makuuhuone, "olohuone" : olohuone, "keittiö" : keittiö, "työhuone" : työhuone, "kodinhoitohuone" : kodinhoitohuone, "vessa": vessa}
 
