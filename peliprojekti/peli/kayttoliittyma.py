@@ -1,11 +1,5 @@
 import subprocess
 def printStats(location, time, score, bag):
-    # try:
-    #     result = subprocess.run("clear", check=True, capture_output=True, text=True) # Puhdistaa terminalin jokaisen tulostuksen välissä
-    # except subprocess.CalledProcessError as e:
-    #     print(f"Komento epäonnistui: {e.returncode}") 
-    #     print(f"Error message: {e.stderr.strip()}")
-
 
     # Formatoitu status ikkuna josta voi seurata pisteitä, aikaa, huonetta sekä reppua(esineitä) 
     loc_text = f"Sijainti: {location}"
