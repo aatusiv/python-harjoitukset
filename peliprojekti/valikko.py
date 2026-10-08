@@ -11,6 +11,7 @@ def menu():
 
         selection = input("1. Aloita peli\n2. Lataa peli\n3. Tarkasta pelaajan tiedot\n4. Vaihda pelaajan tiedot\n0. Lopeta peli\n")
         if selection == "1":
+            kayttoliittyma.clear_screen()
             input("Onnea peliin! Enter aloittaaksesi pelin")
             return None
 

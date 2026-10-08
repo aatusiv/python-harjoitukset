@@ -40,6 +40,11 @@ def main():
             current_room = huoneet.all_rooms[ernesti.location]
             print(f"\n{current_room.desc}\n")
 
+            if len(current_room.devices) > 0:
+                for dev_name in current_room.devices:
+                    if dev_name not in ernesti.devices_off:
+                        print(f"Huomaat, että {dev_name} on jäänyt päälle turhaan.")
+                print()
 
             # Lattialla olevat esineet
             if len(current_room.items) > 0:
@@ -48,61 +53,67 @@ def main():
                     print(f" - {item}")
                 print()
 
-            if len(current_room.devices) > 0:
-                for dev_name in current_room.devices:
-                    if dev_name not in ernesti.devices_off:
-                        print(f"Huomaat, että {dev_name} on jäänyt päälle turhaan.")
-                print()
 
 
             
             print("Mahdolliset suunnat:")
-            for direction in current_room.nearby_rooms:
-                print(f"- {direction}")
+            for direction, room_key in current_room.nearby_rooms.items():
+                target_room = huoneet.all_rooms[room_key]
+                print(f"- {direction} ({target_room.name})")
             print("\n" + "="*30)
 
-            selection = input("Mitä ernesti tekee? (tai lopeta): ")
+            selection = input("Mitä ernesti tekee? (liiku/ota/sammuta/tallenna/lopeta): ")
 
             if selection == "lopeta":
-                print("Peli päättyi.")
+                print("\nPeli päättyi.\n")
                 break
 
             elif selection == "tallenna":
                 tallennus.save_game(ernesti, time)
-                input("Enter jatkaaksesi.")
+                input("\nEnter jatkaaksesi.")
 
             # Tarkistaa suunnan + liikuttaa ernestin
+        
             elif selection.startswith("liiku"):
-                direction = selection.split(" ")[1]
-                if direction in current_room.nearby_rooms:
-                    new_loc = current_room.nearby_rooms[direction]
+                try:
+                    direction = selection.split(" ")[1]
+                    if direction in current_room.nearby_rooms:
+                        new_loc = current_room.nearby_rooms[direction]
 
-                    if new_loc == "kodinhoitohuone" and "koiranluu" not in ernesti.bag:
-                        input("Koira vartioi kodinhoitohuoneessa, tarvitset luun jatkaaksesi. Enter jatkaaksesi.")
+                        if new_loc == "kodinhoitohuone" and "koiranluu" not in ernesti.bag:
+                            input("Koira vartioi kodinhoitohuoneessa, tarvitset luun jatkaaksesi. Enter jatkaaksesi.")
+                        else:
+                            ernesti.move(new_loc) 
+                            time += 15
                     else:
-                        ernesti.move(new_loc) 
-                        time += 15
-                else:
-                    input(f"Ei voi liikkua suuntaan {direction}. Enter jatkaaksesi.")
+                        input(f"Ei voi liikkua suuntaan {direction}. Enter jatkaaksesi.")
+                except IndexError:
+                    input("Anna lisäksi sijainnin suunta. Enter jatkaaksesi.")
 
             elif selection.startswith("ota"):
-                item = selection.split(" ")[1]
+                try:
+                    item = selection.split(" ")[1]
 
-                if item in current_room.items:
-                    ernesti.pick_item(item)
-                    current_room.items.remove(item)
-                    time += 15
-                else:
-                    input(f"Ei ole esinettä: {item}. Enterr jatkaaksesi.")
+                    if item in current_room.items:
+                        ernesti.pick_item(item)
+                        current_room.items.remove(item)
+                        time += 15
+                    else:
+                        input(f"Ei ole esinettä: {item}. Enterr jatkaaksesi.")
+                except IndexError:
+                    input("Anna lisäksi esineen nimi. Enter jatkaaksesi.")
 
             elif selection.startswith("sammuta"):
-                dev_name = selection.split(" ")[1]
+                try:
+                    dev_name = selection.split(" ")[1]
 
-                if dev_name in current_room.devices:
-                    ernesti.turn_off(dev_name)
-                else:
-                    input(f"Huoneessa ei ole laitetta {dev_name}.")
-            
+                    if dev_name in current_room.devices:
+                        ernesti.turn_off(dev_name)
+                    else:
+                        input(f"Huoneessa ei ole laitetta {dev_name}.")
+                except IndexError:
+                    input("Anna lisäksi laitteen nimi. Enter jatkaaksesi.")
+
             else:
                 input("Virheellinen komento. Enter jatkaaksesi")
             
