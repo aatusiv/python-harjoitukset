@@ -4,8 +4,10 @@ def printStats(location, time, score, bag):
     # Formatoitu status ikkuna josta voi seurata pisteitä, aikaa, huonetta sekä reppua(esineitä) 
     loc_text = f"Sijainti: {location}"
     score_text = f"Pisteet: {score}"
+    time_text = f"Aika: {time}"
+    bag_text = f"Reppu: {", ".join(bag)}"
     print("=" * 140)
-    print(f"| {loc_text:^65} | Aika: {time:^63}|\n| {score_text:^65} | Reppu: {", ".join(bag):^62}|")
+    print(f"| {loc_text:^65} | {time_text:^68} |\n| {score_text:^65} | {bag_text:^68} |")
     print("=" * 140)
 
 
