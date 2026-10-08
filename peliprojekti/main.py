@@ -1,13 +1,19 @@
 import pelaajatiedot, valikko, subprocess, os
-from peli import hahmot, huoneet, kayttoliittyma
+from peli import hahmot, huoneet, kayttoliittyma, tallennus
 
 def main():
     age_check = pelaajatiedot.kysy_tiedot()
     if age_check is True:
-        valikko.menu()
-        ernesti = hahmot.Kissa(name="Ernesti", score=0, bag=[], location="makuuhuone") # Luo pelin päähahmon, aloituspaikkana aina makuuhuone
+        data = valikko.menu()
+        if data is False:
+            return
 
-        time = 120
+        if isinstance(data, tuple):
+            ernesti = data[0]
+            time = data[1]
+        else:
+            ernesti = hahmot.Kissa(name="Ernesti", score=0, bag=[], location="makuuhuone")
+            time = 120
 
         while True:
 
@@ -60,16 +66,24 @@ def main():
             selection = input("Mitä ernesti tekee? (tai lopeta): ")
 
             if selection == "lopeta":
-                print("Peli päättyi. Hyvää yötä!")
+                print("Peli päättyi.")
                 break
+
+            elif selection == "tallenna":
+                tallennus.save_game(ernesti, time)
+                input("Enter jatkaaksesi.")
 
             # Tarkistaa suunnan + liikuttaa ernestin
             elif selection.startswith("liiku"):
                 direction = selection.split(" ")[1]
                 if direction in current_room.nearby_rooms:
                     new_loc = current_room.nearby_rooms[direction]
-                    ernesti.move(new_loc) 
-                    time += 15
+
+                    if new_loc == "kodinhoitohuone" and "koiranluu" not in ernesti.bag:
+                        input("Koira vartioi kodinhoitohuoneessa, tarvitset luun jatkaaksesi. Enter jatkaaksesi.")
+                    else:
+                        ernesti.move(new_loc) 
+                        time += 15
                 else:
                     input(f"Ei voi liikkua suuntaan {direction}. Enter jatkaaksesi.")
 
