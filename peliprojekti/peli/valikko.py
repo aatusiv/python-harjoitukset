@@ -1,19 +1,26 @@
-from peli import tallennus, hahmot, kayttoliittyma
+import tallennus, hahmot, kayttoliittyma, pelaajatiedot
 import os, subprocess
 
 def menu():
 
+
+    # Kysyy pelaajan tiedot
+    name, age = pelaajatiedot.kysy_tiedot()
+    
     while True:
 
         # Puhdistaa näytön ja printtaa statuksen, tarkastaa käyttiksen
         kayttoliittyma.clear_screen()
 
+        selection = input("1. Aloita uusi peli\n2. Lataa peli\n3. Tarkasta pelaajan tiedot\n4. Vaihda pelaajan tiedot\n0. Lopeta peli\n")
 
-        selection = input("1. Aloita peli\n2. Lataa peli\n3. Tarkasta pelaajan tiedot\n4. Vaihda pelaajan tiedot\n0. Lopeta peli\n")
         if selection == "1":
+            ernesti = hahmot.Kissa(name="Ernesti", score=0, bag=[], location="makuuhuone")
+            time = 120
+            tallennus.save_game(ernesti, time, name, age)
             kayttoliittyma.clear_screen()
             input("Onnea peliin! Enter aloittaaksesi pelin")
-            return None
+            return ernesti, time
 
         elif selection == "2":
             # Ladataan tiedot JSON filusta

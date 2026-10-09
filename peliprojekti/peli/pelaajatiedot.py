@@ -20,12 +20,7 @@ def kysy_tiedot():
         print("Olet alaikäinen, peli sammuu.")
         return False
     else:
-        try:
-            with open("pelaaja-tiedot.txt", "w") as file:
-                file.write(f"{name}, {age}")
-        except IOError:
-            print("Tiedoston käsittelyssä tapahtui virhe.")
-        return True
+        return name, age
 
 if __name__ == "__main__":
     kysy_tiedot()
