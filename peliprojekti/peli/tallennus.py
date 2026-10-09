@@ -15,12 +15,12 @@ def save_game(ernesti, time, name, age):
 def lataa_peli():
     # Tarkistetetaan tallennus
     if not os.path.exists(FILE_NAME):
-        print("\nTallennusta ei löytynyt")
+        #print("\nTallennusta ei löytynyt")
         return None # Jos epäonnistuu, palauta none
         
     # Avataan tiedosto
-    with open(FILE_NAME, "r") as file:
+    with open(FILE_NAME, "r", encoding="UTF-8") as file:
         ladattu_data = json.load(file)
-        
+    print(ladattu_data)
     print("\nPeli ladattu onnistuneesti!")
     return ladattu_data # Palautetaan data main.py 

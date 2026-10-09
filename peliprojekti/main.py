@@ -7,18 +7,14 @@ def main():
     kayttoliittyma.clear_screen()
 
     data = valikko.menu() # Jos tallennus olemassa, palauttaa ernestin + ajan
-
+    print(data)
     # Lopettaa pelin (valikko.menu() palauttaa False, jos käyttäjä valitsee 0)
-    if data == False:
+    if data == None:
         return
-
-    if isinstance(data, tuple):
-        ernesti = data[0]
-        time = data[1]
-        items = data[2]
-    else:
-        ernesti = hahmot.Kissa(name="Ernesti", score=0, bag=[], location="makuuhuone")
-        time = 120
+    ernesti = data[0]
+    time = data[1]
+    name = data[2]
+    age = data[3]
 
 
     # Tulostaa ohjeet sekä intron pelaajalle
@@ -86,8 +82,9 @@ def main():
             break
 
         elif selection == "tallenna":
-            tallennus.save_game(ernesti, time)
+            tallennus.save_game(ernesti, time, name, age)
             input("\nEnter jatkaaksesi.")
+            break
 
         # Tarkistaa suunnan + liikuttaa ernestin
         elif selection.startswith("liiku"):
