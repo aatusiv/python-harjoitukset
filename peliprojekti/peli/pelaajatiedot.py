@@ -27,8 +27,5 @@ def kysy_tiedot():
             print("Tiedoston käsittelyssä tapahtui virhe.")
         return True
 
-def main():
-    kysy_tiedot()
-
 if __name__ == "__main__":
-    main()
+    kysy_tiedot()

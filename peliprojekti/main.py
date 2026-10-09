@@ -48,7 +48,8 @@ def main():
                         print(f"Huomaat, että {dev_name} on jäänyt päälle turhaan.")
                 print()
 
-            # Lattialla olevat esineet
+            # Huoneissa olevat esineet
+            # Printtaa vain esineet joita ernesti ei ole ottanut
             if len(current_room.items) > 0:
                 missing_items = []
 
