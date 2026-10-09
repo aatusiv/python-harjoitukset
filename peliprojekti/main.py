@@ -1,5 +1,5 @@
-import pelaajatiedot, valikko, subprocess, os
-from peli import hahmot, huoneet, kayttoliittyma, tallennus
+import subprocess, os
+from peli import hahmot, huoneet, kayttoliittyma, tallennus, pelaajatiedot, valikko
 
 def main():
 
@@ -18,6 +18,7 @@ def main():
         if isinstance(data, tuple):
             ernesti = data[0]
             time = data[1]
+            items = data[2]
         else:
             ernesti = hahmot.Kissa(name="Ernesti", score=0, bag=[], location="makuuhuone")
             time = 120
@@ -49,10 +50,18 @@ def main():
 
             # Lattialla olevat esineet
             if len(current_room.items) > 0:
-                print("Huoneessa on seuraavat esineet:")
+                missing_items = []
+
                 for item in current_room.items:
-                    print(f" - {item}")
-                print()
+                    if item not in ernesti.bag:
+                        missing_items.append(item)
+                
+                if missing_items:
+                    print("Huoneessa on seuraavat esineet:")
+                    for item in missing_items:
+                        print(f" - {item}")
+                    print()
+
 
 
 
@@ -70,7 +79,7 @@ def main():
                 break
 
             elif selection == "tallenna":
-                tallennus.save_game(ernesti, time)
+                tallennus.save_game(ernesti, time, current_room.items)
                 input("\nEnter jatkaaksesi.")
 
             # Tarkistaa suunnan + liikuttaa ernestin
@@ -113,6 +122,7 @@ def main():
 
                     if dev_name in current_room.devices:
                         ernesti.turn_off(dev_name)
+                        time += 15
                     else:
                         input(f"Huoneessa ei ole laitetta {dev_name}.")
                 except IndexError:

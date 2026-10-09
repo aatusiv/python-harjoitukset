@@ -3,7 +3,7 @@ class Kissa():
     def __init__(self, name, score, bag, location):
         self.name = name
         self.score = score
-        self.bag = bag
+        self.bag = set(bag)
         self.location = location
         self.devices_off = set()
 
@@ -11,10 +11,13 @@ class Kissa():
         self.location = room
 
     def pick_item(self, item):
-        self.bag.append(item)
-        given_points = item_scores.get(item, 0)
-        self.score += given_points
-        input(f"\nErnesti otti esineen: {item}. +{given_points} pistettä")
+        if item not in self.bag:
+            self.bag.add(item)
+            given_points = item_scores.get(item, 0)
+            self.score += given_points
+            input(f"\nErnesti otti esineen: {item}. +{given_points} pistettä")
+        else:
+            input(f"\nEsine '{item}' on jo otettu.")
 
     def turn_off(self, device):
         if device not in self.devices_off:

@@ -20,10 +20,12 @@ def menu():
             loaded_data = tallennus.lataa_peli()
             
             if loaded_data is not None:
-                ernesti = hahmot.Kissa(name="Ernesti", score=loaded_data["pisteet"], bag=loaded_data["reppu"], location=loaded_data["sijainti"])
+                ernesti = hahmot.Kissa(name="Ernesti", score=loaded_data["pisteet"], bag=[], location=loaded_data["sijainti"])
+                ernesti.bag = set(loaded_data["reppu"])
                 ernesti.devices_off = set(loaded_data["sammutetut"])
                 time = loaded_data["kello"]
-                return ernesti, time
+                items = loaded_data["esineet"]
+                return ernesti, time, items
             else:
                 input("Tallennuksen lataaminen epäonnistui.")
 
