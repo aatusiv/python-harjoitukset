@@ -2,4 +2,4 @@
 peliprojekti/pelaaja-tiedot.txt
 peliprojekti/__pycache__/
 peliprojekti/peli/__pycache__
-peliprojekti/tallennus.json
+peliprojekti/peli/data/tallennus.json
