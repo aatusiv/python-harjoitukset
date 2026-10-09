@@ -1,5 +1,5 @@
 import subprocess, os
-from peli import hahmot, huoneet, kayttoliittyma, tallennus, pelaajatiedot, valikko
+from peli import hahmot, huoneet, kayttoliittyma, tallennus, pelaajatiedot, valikko, ohjeet
 
 def main():
 
@@ -22,6 +22,15 @@ def main():
         else:
             ernesti = hahmot.Kissa(name="Ernesti", score=0, bag=[], location="makuuhuone")
             time = 120
+
+
+        # Tulostaa ohjeet sekä intron pelaajalle
+        kayttoliittyma.clear_screen()
+        ohjeet.print_rules()
+        
+        kayttoliittyma.clear_screen()
+        ohjeet.print_intro()
+
 
         while True:
 

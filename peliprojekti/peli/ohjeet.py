@@ -4,7 +4,7 @@ def print_rules():
     with open("peli/ohjeet.txt", "r", encoding="utf-8") as file:
         instructions = file.read()
     print(instructions)
-    input("Enter jatkaaksesi.")
+    input("\nEnter jatkaaksesi.")
 
 def print_intro():
 
@@ -12,7 +12,7 @@ def print_intro():
     with open("peli/intro.txt", "r", encoding="utf-8") as file:
         instructions = file.read()
     print(instructions)
-    input("Enter jatkaaksesi.")
+    input("\nEnter jatkaaksesi.")
 
 if __name__ == "__main__":
     print_rules()

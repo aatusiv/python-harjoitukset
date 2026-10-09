@@ -22,13 +22,13 @@ class Kissa():
     def turn_off(self, device):
         if device not in self.devices_off:
             self.devices_off.add(device)
-            self.score += 10
-            input(f"\nErnesti sammutti laitteen: {device}. +10 pistettä")
+            self.score += 25
+            input(f"\nErnesti sammutti laitteen: {device}. +25 pistettä")
         else:
             input(f"\nLaite '{device}' on jo sammutettu.")
 
 
-item_scores = {"kinkkuviipale" : 20, "nakki" : 15, "kissanminttu" : 10, "raksuja" : 5, "lankakerä" : 2, "vessapaperirulla" : 2, "koiranluu" : 0}
+item_scores = {"kinkkuviipale" : 30, "nakki" : 20, "kissanminttu" : 10, "raksuja" : 15, "lankakerä" : 5, "vessapaperirulla" : 5, "koiranluu" : 0}
 
 
 if __name__ == "__main__":
