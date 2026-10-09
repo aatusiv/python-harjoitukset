@@ -18,7 +18,7 @@ def menu():
 
             ernesti = hahmot.Kissa("Ernesti", 0, [], "makuuhuone")
             time = 120
-            tallennus.save_game(ernesti, time, name, age)
+            tallennus.save_game(ernesti, time, name.lower(), age)
 
             kayttoliittyma.clear_screen()
             input("Onnea peliin! Enter aloittaaksesi pelin")
@@ -27,15 +27,18 @@ def menu():
 
         elif selection == "2":
             # Ladataan tiedot JSON filusta
-            loaded_data = tallennus.lataa_peli()
+            loaded_data = tallennus.lataa_peli(name.lower())
             
             if loaded_data is not None:
 
                 ernesti = hahmot.Kissa("Ernesti", loaded_data["pisteet"], set(loaded_data["reppu"]), loaded_data["sijainti"])
                 ernesti.devices_off = set(loaded_data["sammutetut"])
                 time = loaded_data["kello"]
+                name = loaded_data["nimi"]
+                age = loaded_data["ikä"]
 
-                return ernesti, time
+                print("\nPeli ladattu onnistuneesti!")
+                return ernesti, time, name, age
             else:
                 kayttoliittyma.clear_screen()
                 input("Tallennuksen lataaminen epäonnistui.")
@@ -43,10 +46,10 @@ def menu():
 
         elif selection == "3":
             kayttoliittyma.clear_screen()
-            loaded_data = tallennus.lataa_peli()
+            loaded_data = tallennus.lataa_peli(name.lower())
 
             if loaded_data is not None:
-                print(f"Nimi: {loaded_data["nimi"]}\nIkä: {loaded_data["ikä"]}\nPisteet: {loaded_data["pisteet"]}\nSijainti: {loaded_data["sijainti"]}")
+                print(f"Nimi: {loaded_data["nimi"]}\nIkä: {loaded_data["ikä"]}\nPisteet: {loaded_data["pisteet"]}\nAika: {loaded_data["kello"]}\nSijainti: {loaded_data["sijainti"]}")
                 input()
             else:
                 kayttoliittyma.clear_screen()
