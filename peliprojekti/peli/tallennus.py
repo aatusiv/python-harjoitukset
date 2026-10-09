@@ -2,8 +2,8 @@ import os, json
 
 FILE_NAME = "tallennus.json"
 
-def save_game(ernesti, time, items):
-    saved_data = {"kello" : time, "sijainti" : ernesti.location, "pisteet" : ernesti.score, "reppu" : list(ernesti.bag), "sammutetut" : list(ernesti.devices_off), "esineet" : items}
+def save_game(ernesti, time):
+    saved_data = {"kello" : time, "sijainti" : ernesti.location, "pisteet" : ernesti.score, "reppu" : list(ernesti.bag), "sammutetut" : list(ernesti.devices_off)}
     
     # Tallennetaan JSONiin
     with open(FILE_NAME, "w") as file:

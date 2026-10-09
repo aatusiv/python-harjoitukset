@@ -9,7 +9,7 @@ def main():
     age_check = pelaajatiedot.kysy_tiedot()
     if age_check is True:
 
-        data = valikko.menu() # Jos olemassa, palauttaa ernestin + ajan
+        data = valikko.menu() # Jos tallennus olemassa, palauttaa ernestin + ajan
 
         # Lopettaa pelin (valikko.menu() palauttaa False, jos käyttäjä valitsee 0)
         if data == False:
@@ -34,7 +34,7 @@ def main():
 
         while True:
 
-            # Ajan formaus
+            # Ajan formatointi
             time_hours = time // 60
             time_min = time % 60
             print_time = f"{time_hours:02d}:{time_min:02d}"
@@ -89,11 +89,10 @@ def main():
                 break
 
             elif selection == "tallenna":
-                tallennus.save_game(ernesti, time, current_room.items)
+                tallennus.save_game(ernesti, time)
                 input("\nEnter jatkaaksesi.")
 
             # Tarkistaa suunnan + liikuttaa ernestin
-        
             elif selection.startswith("liiku"):
                 try:
                     direction = selection.split(" ")[1]
@@ -115,6 +114,7 @@ def main():
 
             elif selection.startswith("ota"):
                 try:
+                    # Parsee käyttäjän antaman inputin komennosta ja esineen nimestä
                     item = selection.split(" ")[1]
 
                     if item in current_room.items:
@@ -128,6 +128,7 @@ def main():
 
             elif selection.startswith("sammuta"):
                 try:
+                    # Parsee käyttäjän antaman inputin komennosta ja laitteen nimestä
                     dev_name = selection.split(" ")[1]
 
                     if dev_name in current_room.devices:
