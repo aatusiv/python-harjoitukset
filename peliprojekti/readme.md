@@ -13,4 +13,7 @@ Peliä pelataan kirjoittamalla komentoja (liiku/ota/sammuta). Voit myös halutes
 esim. "liiku etelä" liikkuaksesi eteläiseen huoneeseen, "sammuta televisio" sammuttaaksesi TV:n tai "ota lankakerä" kerätäksesi esineen reppuun.
 ![pelin komento liiku etelä](image.png)
 
+Peliä käynnistäessä kysytään ikä, alle 12 vuotiaat eivät voi pelata peliä.
+Peli tallennetaan ja ladataan pelaajan antamalla nimellä.
+
 Pelissä on otettu kestävän kehityksen kannalta energiansäästö huomioon (päälle jääneet laitteet, valot yms.), joka edistää ympäristöllistä- ja taloudellista kestävyyttä.
