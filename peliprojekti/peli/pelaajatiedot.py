@@ -1,10 +1,13 @@
+from peli import kayttoliittyma
+
 def ask_age():
 
     while True:
         try:
+            kayttoliittyma.clear_screen()
             age = int(input("Anna ikäsi: "))
             if age < 0:
-                print("Ikä ei voi olla negatiivinen.")
+                input("Ikä ei voi olla negatiivinen.")
                 continue 
             break
 
@@ -19,9 +22,10 @@ def ask_age():
 
 def ask_name():
     while True:
+        kayttoliittyma.clear_screen()
         name = input("Anna nimesi: ")
         if name == "" or name.isdigit():
-            print("Nimi ei voi olla tyhjä tai numeroita.")
+            input("Nimi ei voi olla tyhjä tai numeroita.")
             continue
         return name
 

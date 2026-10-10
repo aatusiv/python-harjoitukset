@@ -46,13 +46,18 @@ def menu():
 
         elif selection == "3":
             kayttoliittyma.clear_screen()
-            loaded_data = tallennus.lataa_peli(name.lower())
-
-            if loaded_data is not None:
-                print(f"Nimi: {loaded_data["nimi"]}\nPisteet: {loaded_data["pisteet"]}\nAika: {loaded_data["kello"]}\nSijainti: {loaded_data["sijainti"]}")
-                input()
-            else:
-                print(f"Nimi: {name}\nPisteet: Ei tallennusta\nAika: Ei tallennusta\nSijainti: Ei tallennusta")
+            name = pelaajatiedot.ask_name()
+            try:
+                kayttoliittyma.clear_screen()
+                loaded_data = tallennus.lataa_peli(name.lower())
+                if loaded_data is not None:
+                    print(f"Nimi: {loaded_data["nimi"]}\nPisteet: {loaded_data["pisteet"]}\nAika: {loaded_data["kello"]// 60:02d}:{loaded_data["kello"]% 60:02d}\nSijainti: {loaded_data["sijainti"]}")
+                    input()
+                else:
+                    print(f"Nimi: {name}\nPisteet: Ei tallennusta\nAika: Ei tallennusta\nSijainti: Ei tallennusta")
+                    input()
+            except UnboundLocalError:
+                print("Nimellä ei löydy tallennusta.")
                 input()
 
         elif selection == "4":
