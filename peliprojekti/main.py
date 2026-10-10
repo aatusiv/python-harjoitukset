@@ -13,7 +13,6 @@ def main():
     ernesti = data[0]
     time = data[1]
     name = data[2]
-    age = data[3]
 
 
     # Tulostaa ohjeet sekä intron pelaajalle
@@ -81,7 +80,7 @@ def main():
             break
 
         elif selection == "tallenna":
-            tallennus.save_game(ernesti, time, name, age)
+            tallennus.save_game(ernesti, time, name)
             input("\nEnter jatkaaksesi.")
             break
 

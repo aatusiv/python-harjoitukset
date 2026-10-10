@@ -1,12 +1,7 @@
-def kysy_tiedot():
+def ask_age():
 
     while True:
         try:
-            name = input("Anna nimesi: ")
-            if name == "":
-                print("Nimi ei voi olla tyhjä.")
-                continue
-
             age = int(input("Anna ikäsi: "))
             if age < 0:
                 print("Ikä ei voi olla negatiivinen.")
@@ -18,9 +13,17 @@ def kysy_tiedot():
 
     if age < 12:
         print("Olet alaikäinen, peli sammuu.")
-        return None, False
+        return False
     else:
-        return name, age
+        return age
+
+def ask_name():
+    while True:
+        name = input("Anna nimesi: ")
+        if name == "" or name.isdigit():
+            print("Nimi ei voi olla tyhjä tai numeroita.")
+            continue
+        return name
 
 if __name__ == "__main__":
-    kysy_tiedot()
+    ask_age()
