@@ -13,7 +13,6 @@ def save_game(ernesti, time, name, age):
 def lataa_peli(name):
     # Tarkistetetaan tallennus
     if not os.path.exists(f"peli/data/tallennus_{name}.json"):
-        #print("\nTallennusta ei löytynyt")
         return None # Jos epäonnistuu, palauta none
         
     # Avataan tiedosto

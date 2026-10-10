@@ -18,7 +18,7 @@ def kysy_tiedot():
 
     if age < 12:
         print("Olet alaikäinen, peli sammuu.")
-        return False
+        return None, False
     else:
         return name, age
 

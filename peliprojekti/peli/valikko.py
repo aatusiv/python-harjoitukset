@@ -6,7 +6,8 @@ def menu():
 
     # Kysyy pelaajan tiedot
     name, age = pelaajatiedot.kysy_tiedot()
-    
+    if age == False:
+        return None
     while True:
 
         # Puhdistaa näytön ja printtaa statuksen, tarkastaa käyttiksen
@@ -52,11 +53,13 @@ def menu():
                 print(f"Nimi: {loaded_data["nimi"]}\nIkä: {loaded_data["ikä"]}\nPisteet: {loaded_data["pisteet"]}\nAika: {loaded_data["kello"]}\nSijainti: {loaded_data["sijainti"]}")
                 input()
             else:
-                kayttoliittyma.clear_screen()
-                input("Tallennuksen lataaminen epäonnistui.")
+                print(f"Nimi: {name}\nIkä: {age}\nPisteet: Ei tallennusta\nAika: Ei tallennusta\nSijainti: Ei tallennusta")
+                input()
 
         elif selection == "4":
             name, age = change_playerinfo()
+            if age == False:
+                return None
 
 
         elif selection == "0":
