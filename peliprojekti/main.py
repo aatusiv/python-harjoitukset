@@ -91,12 +91,21 @@ def main():
                 if direction in current_room.nearby_rooms:
                     new_loc = current_room.nearby_rooms[direction]
 
-                    if new_loc == "kodinhoitohuone" and "koiranluu" not in ernesti.bag:
-                        input("Koira vartioi kodinhoitohuoneessa, tarvitset luun jatkaaksesi. Enter jatkaaksesi.")
-                    else:
-                        if new_loc == "kodinhoitohuone" and "koiranluu" in ernesti.bag:
-                            input("Ernesti heittää luun harhauttaakseen koiraa.")
+                    if new_loc == "kodinhoitohuone" and not ernesti.thrownbone:
+                        # Koira on viellä tiellä, tarkastetaan onko luu
+                        if "koiranluu" in ernesti.bag:
+                            input("Ernesti heittää luun harhauttaakseen koiraa. Enter jatkaaksesi.")
                             ernesti.bag.remove("koiranluu")
+                            ernesti.thrownbone = True
+                            
+                            # Liikutaan huoneeseen
+                            ernesti.move(new_loc)
+                            time += 15
+                        else:
+                            # Ei luuta eikä koiraa harhautettu
+                            input("Koira vartioi kodinhoitohuoneessa, tarvitset luun jatkaaksesi. Enter jatkaaksesi.")
+
+                    else:
                         ernesti.move(new_loc)
                         time += 15
                 else:

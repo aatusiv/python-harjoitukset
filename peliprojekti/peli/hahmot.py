@@ -5,6 +5,7 @@ class Kissa():
         self.score = score
         self.bag = set(bag)
         self.location = location
+        self.thrownbone = False
         self.devices_off = set()
 
     def move(self, room):
@@ -28,7 +29,7 @@ class Kissa():
             input(f"\nLaite '{device}' on jo sammutettu.")
 
 
-item_scores = {"kinkkuviipale" : 30, "nakki" : 20, "kissanminttu" : 10, "raksuja" : 15, "lankakerä" : 5, "vessapaperirulla" : 5, "koiranluu" : 0}
+item_scores = {"kinkkuviipale" : 30, "nakki" : 20, "kissanminttu" : 10, "raksuja" : 15, "lelu" : 10, "lankakerä" : 5, "vessapaperi" : 5, "koiranluu" : 0}
 
 
 if __name__ == "__main__":
