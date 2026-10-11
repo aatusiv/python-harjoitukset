@@ -7,7 +7,7 @@ def main():
     kayttoliittyma.clear_screen()
 
     data = valikko.menu() # Jos tallennus olemassa, palauttaa ernestin + ajan
-    # Lopettaa pelin (valikko.menu() palauttaa False, jos käyttäjä valitsee 0)
+    # Lopettaa pelin (valikko.menu() palauttaa None, jos käyttäjä valitsee 0)
     if data == None:
         return
     ernesti = data[0]
