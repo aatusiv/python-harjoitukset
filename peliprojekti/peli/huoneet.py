@@ -7,6 +7,8 @@ class Huone():
         self.items = items
         self.devices = devices
 
+
+# Luodaan huone-oliot
 makuuhuone = Huone("makuuhuone", "Ihmiset nukkuvat... Pitää olla hiljaa, jotta he eivät herää.", {"etelä" : "olohuone", "itä" : "kodinhoitohuone"}, [], [])
 olohuone = Huone("olohuone", "Saavut olohuoneeseen, kuu paistaa ikkunasta sisään.", {"pohjoinen" : "makuuhuone", "etelä" : "takkahuone", "länsi" : "työhuone", "itä" : "keittiö"}, ["kissanminttu"],  ["televisio"])
 työhuone = Huone("työhuone", "Työhuoneessa on tietokone, ihmisten likaisia kahvikuppeja sekä kirjoja lattialla.", {"itä" : "olohuone"}, ["koiranluu", "lankakerä"], ["tietokone"])

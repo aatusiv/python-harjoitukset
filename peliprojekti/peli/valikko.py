@@ -45,6 +45,7 @@ def menu():
 
 
         elif selection == "3":
+            # Tarkistetaan pelaajan tiedot annetulla nimellä
             kayttoliittyma.clear_screen()
             name = pelaajatiedot.ask_name()
             try:

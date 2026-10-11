@@ -29,6 +29,7 @@ class Kissa():
             input(f"\nLaite '{device}' on jo sammutettu.")
 
 
+# Luodaan pisteet esineille ja herkuille
 item_scores = {"kinkkuviipale" : 30, "nakki" : 20, "kissanminttu" : 10, "raksuja" : 15, "lelu" : 10, "lankakerä" : 5, "vessapaperi" : 5, "koiranluu" : 0}
 
 
